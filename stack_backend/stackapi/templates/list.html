@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+<!--<table class="table table-bordered">-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th>QUESTION</th>-->
+<!--      <th>VOTE COUNT</th>-->
+<!--      <th>VIEW</th>-->
+<!--      <th>TAGS</th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--    {% for que in questions %}-->
+<!--      <tr>-->
+<!--        <td>{{ que.question }}</td>-->
+<!--        <td>{{ que.vote_count }}</td>-->
+<!--        <td>{{ que.view }}</td>-->
+<!--        <td>{{ que.tags }}</td>-->
+<!--      </tr>-->
+<!--    {% endfor %}-->
+<!--  </tbody>-->
+<!--</table>-->
+
+<!--{% if questions.has_other_pages %}-->
+<!--  <ul class="pagination">-->
+<!--    {% if questions.has_previous %}-->
+<!--      <li><a href="?page={{ questions.previous_page_number }}">&laquo;</a></li>-->
+<!--    {% else %}-->
+<!--      <li class="disabled"><span>&laquo;</span></li>-->
+<!--    {% endif %}-->
+<!--    {% for i in questions.paginator.page_range %}-->
+<!--      {% if questions.number == i %}-->
+<!--        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>-->
+<!--      {% else %}-->
+<!--        <li><a href="?page={{ i }}">{{ i }}</a></li>-->
+<!--      {% endif %}-->
+<!--    {% endfor %}-->
+<!--    {% if questions.has_next %}-->
+<!--      <li><a href="?page={{ questions.next_page_number }}">&raquo;</a></li>-->
+<!--    {% else %}-->
+<!--      <li class="disabled"><span>&raquo;</span></li>-->
+<!--    {% endif %}-->
+<!--  </ul>-->
+<!--{% endif %}-->
+
+<div class = "jumbotron">
+    {% for post in questions %}
+
+    <h1 class="display-6">{{post.question}}</h1>
+    Vote Count {{post.vote_count}} Views {{post.views}}
+
+    {{post.tags|truncatewords:30|linebreaks}}
+
+    <hr class="my-4">
+    {% endfor %}
+</div>
+{%	include	"pagination.html"	with	page=questions	%}
